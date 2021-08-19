@@ -3,4 +3,5 @@
     <string name="default_title">Title</string>
     <string name="default_ovreview">Ovreview</string>
     <string name="default_vote">0.0</string>
+    <string name="enter_year_label">Enter year</string>
 </resources>

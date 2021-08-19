@@ -18,14 +18,14 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val mainLayout = findViewById<LinearLayoutCompat>(R.id.main_layout)
-        val mViewModel = VideoModelView(application)
+        val mainLayout = findViewById<LinearLayoutCompat>(R.id.mainLayout)
+        val viewModel = VideoModelView(application)
         val searchYear = findViewById<EditText>(R.id.year)
         searchYear.setOnEditorActionListener { _, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 val yearString = searchYear.text.toString()
                 if (yearString.matches(("^([1][9]\\d\\d|2[0-9][0-9][0-9])\$").toRegex())) {
-                    mViewModel.getVideoList(yearString)
+                    viewModel.getVideoList(yearString)
                 } else {
                     Snackbar.make(
                         mainLayout,
@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this)
         videoList.layoutManager = layoutManager
         videoList.adapter = VideoListAdapter(this)
-        mViewModel.listItem.observe(this) {
+        viewModel.listItem.observe(this) {
             val adapter = videoList.adapter as VideoListAdapter
             adapter.results = it
             adapter.notifyDataSetChanged()

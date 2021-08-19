@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.appcompat.widget.LinearLayoutCompat xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mainLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.MainActivity"
     android:orientation="vertical"
-    android:id="@+id/main_layout">
+    tools:context=".view.MainActivity">
 
 
     <EditText
@@ -14,13 +14,22 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="number"
+        android:hint="@string/enter_year_label"
         android:imeOptions="actionSearch"
-        android:singleLine="true"
-        android:hint="Enter year"/>
+        android:inputType="number"
+        android:singleLine="true" />
+    <!--  this not work (0dp) on my emulator -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/videoList"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:listitem="@layout/item"/>
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:listitem="@layout/item" />
 </androidx.appcompat.widget.LinearLayoutCompat>

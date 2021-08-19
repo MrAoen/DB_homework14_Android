@@ -20,6 +20,6 @@ interface VideoDao {
     @Query("select * from video v where v.release_date=:year")
     suspend fun selectByYear(year: String): List<VideoRoom>
 
-    @Query("select 1 from video v where v.video_id=:id")
-    suspend fun ifExist(id:Int):Boolean
+    @Query("select v.id from video v where v.video_id=:id")
+    suspend fun ifExist(id:Int):Int?
 }

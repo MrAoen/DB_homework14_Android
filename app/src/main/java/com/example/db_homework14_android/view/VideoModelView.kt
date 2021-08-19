@@ -50,7 +50,9 @@ class VideoModelView(application: Application) : AndroidViewModel(application) {
 
     private suspend fun updateOrInsert(newVideo: VideoRoom) {
         val db = DatabaseConfig.getInstance(getApplication())
-        if (db.ifExist(newVideo.video_id) != null) {
+        val existingId = db.ifExist(newVideo.video_id)
+        if ( existingId != null) {
+            newVideo.id = existingId
             db.update(newVideo)
         } else {
             db.insert(newVideo)
